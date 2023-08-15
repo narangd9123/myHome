@@ -1,7 +1,6 @@
-package com.godchoer.myhome.controller;
-
-import com.godchoer.myhome.model.Board;
-import com.godchoer.myhome.repository.BoardRepository;
+package com.godcoder.myhome.controller;
+import com.godcoder.myhome.repository.BoardRepository;
+import com.godcoder.myhome.model.Board;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
@@ -10,22 +9,20 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class BoardApiController {
+class BoardApiController {
+
     @Autowired
     private BoardRepository repository;
 
-    // Aggregate root
-    // tag::get-aggregate-root[]
     @GetMapping("/boards")
-    List<Board> all(@RequestParam(required = false) String title,
-                    @RequestParam(required = false, defaultValue = "") String content) {
-        if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)){
+    List<Board> all(@RequestParam(required = false, defaultValue = "") String title,
+        @RequestParam(required = false, defaultValue = "") String content) {
+        if(StringUtils.isEmpty(title) && StringUtils.isEmpty(content)) {
             return repository.findAll();
         } else {
             return repository.findByTitleOrContent(title, content);
         }
     }
-    // end::get-aggregate-root[]
 
     @PostMapping("/boards")
     Board newBoard(@RequestBody Board newBoard) {
@@ -36,7 +33,6 @@ public class BoardApiController {
 
     @GetMapping("/boards/{id}")
     Board one(@PathVariable Long id) {
-
         return repository.findById(id).orElse(null);
     }
 
@@ -56,7 +52,7 @@ public class BoardApiController {
     }
 
     @DeleteMapping("/boards/{id}")
-    void deleteBoards(@PathVariable Long id) {
+    void deleteBoard(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }

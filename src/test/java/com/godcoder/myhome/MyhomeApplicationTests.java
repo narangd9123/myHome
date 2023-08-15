@@ -1,4 +1,4 @@
-package com.godchoer.myhome;
+package com.godcoder.myhome;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

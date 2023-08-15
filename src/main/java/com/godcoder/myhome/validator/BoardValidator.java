@@ -1,6 +1,6 @@
-package com.godchoer.myhome.validator;
+package com.godcoder.myhome.validator;
 
-import com.godchoer.myhome.model.Board;
+import com.godcoder.myhome.model.Board;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -16,7 +16,7 @@ public class BoardValidator implements Validator {
     @Override
     public void validate(Object obj, Errors errors) {
         Board b = (Board) obj;
-        if (StringUtils.isEmpty(b.getContent())) {
+        if(StringUtils.isEmpty(b.getContent())) {
             errors.rejectValue("content", "key", "내용을 입력하세요");
         }
     }

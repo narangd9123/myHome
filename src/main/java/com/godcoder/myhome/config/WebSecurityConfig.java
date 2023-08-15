@@ -1,4 +1,4 @@
-package com.godchoer.myhome.config;
+package com.godcoder.myhome.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
